@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 
+/**
+ * Componente Filters
+ * - Permite seleccionar filtros para la búsqueda de gasolineras
+ * - Recoge ciudad (municipio, localidad o provincia), empresa y tipo de carburante
+ * - Cada cambio en los campos actualiza el estado local y comunica los filtros al componente padre mediante setFilters
+ * - Uso de Bootstrap para inputs estilizados
+ */
 function Filters({ setFilters }) {
+  // Estados para cada filtro
   const [empresa, setEmpresa] = useState("");
   const [carburante, setCarburante] = useState("");
-  const [ciudad, setCiudad] = useState(""); // <-- Nuevo filtro ciudad
-  const [radio, setRadio] = useState(10);
+  const [ciudad, setCiudad] = useState("");
+  const [radio, setRadio] = useState(15); // No usado, pero puedes adaptarlo si se requiere
 
+  // Maneja cambios en el filtro de empresa
   const handleEmpresaChange = (e) => {
     setEmpresa(e.target.value);
     setFilters({
@@ -16,6 +25,7 @@ function Filters({ setFilters }) {
     });
   };
 
+  // Maneja cambios en el filtro de carburante
   const handleCarburanteChange = (e) => {
     setCarburante(e.target.value);
     setFilters({
@@ -26,6 +36,7 @@ function Filters({ setFilters }) {
     });
   };
 
+  // Maneja cambios en el filtro de ciudad
   const handleCiudadChange = (e) => {
     setCiudad(e.target.value);
     setFilters({
@@ -36,6 +47,7 @@ function Filters({ setFilters }) {
     });
   };
 
+  // Maneja cambios en el filtro de radio (opcional)
   const handleRadioChange = (e) => {
     const value = Number(e.target.value);
     setRadio(value);
@@ -50,6 +62,7 @@ function Filters({ setFilters }) {
   return (
     <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
       <h4>Filtros de búsqueda</h4>
+      {/* Filtro de Ciudad, Municipio, Localidad o Provincia */}
       <label>
         Ciudad (Municipio, Localidad o Provincia):{" "}
         <input
@@ -61,6 +74,7 @@ function Filters({ setFilters }) {
         />
       </label>
       <br />
+      {/* Filtro por empresa (opcional) */}
       <label>
         Empresa (opcional):{" "}
         <input
@@ -71,6 +85,7 @@ function Filters({ setFilters }) {
         />
       </label>
       <br />
+      {/* Filtro por tipo de carburante */}
       <label>
         Tipo de carburante:{" "}
         <select
@@ -85,7 +100,7 @@ function Filters({ setFilters }) {
         </select>
       </label>
       <br />
-      {/* El radio puedes quitarlo si quieres, ya no es relevante */}
+      {/* Radio button para distancia (no lo usamos aquí, opcional) */}
     </div>
   );
 }
