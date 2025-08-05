@@ -11,3 +11,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.footer-galaxy {
+  background: radial-gradient(ellipse at 20% 80%, #141b26 0%, #090e13 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 -2px 24px 0 #00ffc24d, 0 0 0 0 transparent;
+}
+
+.footer-galaxy::before,
+.footer-galaxy::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footer-galaxy::before {
+  /* Estrellas tenues + neón */
+  background:
+    radial-gradient(circle, rgba(0,255,200,0.22) 2px, transparent 2.2px) 12% 14%,
+    radial-gradient(circle, rgba(0,255,255,0.12) 1.5px, transparent 2px) 30% 66%,
+    radial-gradient(circle, rgba(0,255,120,0.18) 2.5px, transparent 3px) 58% 32%,
+    radial-gradient(circle, rgba(255,255,255,0.17) 1.3px, transparent 2px) 70% 22%,
+    radial-gradient(circle, rgba(0,255,255,0.28) 2.7px, transparent 3.2px) 84% 64%;
+  background-size: 140px 170px, 110px 180px, 180px 120px, 140px 140px, 130px 200px;
+  background-repeat: repeat;
+  filter: blur(0.3px);
+  animation: galaxyMove 24s linear infinite;
+}
+
+.footer-galaxy::after {
+  /* Destellos con glow neón */
+  background:
+    radial-gradient(circle, rgba(0,255,255,0.40) 3px, transparent 3.5px) 27% 90%,
+    radial-gradient(circle, rgba(0,255,200,0.38) 2px, transparent 2.7px) 50% 60%,
+    radial-gradient(circle, rgba(0,255,255,0.32) 2.5px, transparent 3.2px) 78% 88%;
+  background-size: 160px 130px, 210px 120px, 130px 170px;
+  background-repeat: repeat;
+  filter: blur(0.8px) drop-shadow(0 0 10px #00ffe7b3);
+  opacity: 0.88;
+  animation: galaxyMove 34s linear infinite reverse;
+}
+
+@keyframes galaxyMove {
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to { background-position: 180px 80px, 120px 160px, 80px 170px, 50px 90px, 150px 60px; }
+}
