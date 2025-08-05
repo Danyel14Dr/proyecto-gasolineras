@@ -15,10 +15,12 @@ function App() {
 
   return (
     <div className="container-fluid my-4" style={{ marginTop: "2rem" }}>
-      <h1>Buscador de Gasolineras Mediante API España</h1>
-      <Filters setFilters={setFiltersDraft} />
-      <button className="btn btn-primary" onClick={handleConsultar}>Consultar</button>
-
+      <div className="container mb-4">
+        <h1>Buscador de Gasolineras Mediante API España</h1>
+        <Filters setFilters={setFiltersDraft} />
+      <button className="btn btn-primary mt-2" onClick={handleConsultar}>Consultar</button>
+      <pre>{JSON.stringify(filters, null, 2)}</pre>
+      </div>
       {userLocation && (
         <div style={{ marginTop: "1rem" }}>
           <h4>Tu ubicación actual:</h4>
@@ -28,8 +30,6 @@ function App() {
           </p>
         </div>
       )}
-
-      <pre>{JSON.stringify(filters, null, 2)}</pre>
       <div className="container">
         <GasStationList userLocation={userLocation} filters={filters} />
       </div>

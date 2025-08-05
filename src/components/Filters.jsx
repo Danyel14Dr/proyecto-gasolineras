@@ -60,48 +60,51 @@ function Filters({ setFilters }) {
   };
 
   return (
-    <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-      <h4>Filtros de búsqueda</h4>
-      {/* Filtro de Ciudad, Municipio, Localidad o Provincia */}
-      <label>
-        Ciudad (Municipio, Localidad o Provincia):{" "}
+    <form
+      className="d-flex align-items-end flex-wrap gap-2"
+      style={{ maxWidth: 900 }}
+      onSubmit={e => { e.preventDefault(); setFilters({ empresa, carburante, ciudad, radio }); }}
+    >
+      <div>
+        <label className="form-label mb-1">
+          Ciudad (Municipio, Localidad o Provincia):
+        </label>
         <input
           type="text"
           className="form-control"
           value={ciudad}
           onChange={handleCiudadChange}
           placeholder="Ej: Madrid, Albacete..."
+          style={{ minWidth: 170 }}
         />
-      </label>
-      <br />
-      {/* Filtro por empresa (opcional) */}
-      <label>
-        Empresa (opcional):{" "}
+      </div>
+      <div>
+        <label className="form-label mb-1">Empresa (opcional):</label>
         <input
           type="text"
           className="form-control"
           value={empresa}
           onChange={handleEmpresaChange}
+          style={{ minWidth: 120 }}
         />
-      </label>
-      <br />
-      {/* Filtro por tipo de carburante */}
-      <label>
-        Tipo de carburante:{" "}
+      </div>
+      <div>
+        <label className="form-label mb-1">Tipo de carburante:</label>
         <select
           className="form-control"
           value={carburante}
           onChange={handleCarburanteChange}
+          style={{ minWidth: 130 }}
         >
           <option value="">Todos</option>
           <option value="Gasolina 95">Gasolina 95</option>
           <option value="Gasolina 98">Gasolina 98</option>
           <option value="Gasoleo A">Gasoleo A</option>
         </select>
-      </label>
-      <br />
-      {/* Radio button para distancia (no lo usamos aquí, opcional) */}
-    </div>
+      </div>
+      <div>
+      </div>
+    </form>
   );
 }
 
